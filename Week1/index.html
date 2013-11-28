@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/jqm-inlinetabs.min.css" />
 		
+		
 		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
 		<script src="js/libs/modernizr.custom.min.js"></script>
 	
@@ -57,13 +58,16 @@
 				</nav>
 			</header>
 			<section data-role="content">
-				<div data-mini="true" data-role="inlinetabs">
+				<div data-mini="true" data-role="inlinetabs" id="tabs">
 				    <ul>
 				        <li data-tab="1">Service<br />Workorder</li>
 				        <li data-tab="2">Add New<br />Appliance</li>
 				    </ul>
 				    <div data-tab="1">
 						<!-- FORM FOR SERVICE WORKORDER -->
+						<form action="#" id="addService" method="post">
+							<p>* Required</p>
+						</form>
 				    </div>
 				    <div data-tab="2">
 						<!-- FORM FOR ADDING NEW APPLIANCE -->
