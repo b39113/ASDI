@@ -40,8 +40,8 @@
 			<section data-role="content">
 				<a href="#additem"><img src="img/cta.gif" /></a>
 				<a href="#additem" data-role="button">Add Service Workorder</a> 
-				<a href="#options" data-role="button">Shopping List</a>
-				<a href="#options" data-role="button">Login to Account</a>
+				<a href="#shopping" data-role="button">Shopping List</a>
+				<a href="#login" data-role="button">Login to Account</a>
 			</section>
 			<footer data-role="footer" class="ui-grid-a ui-bar">
 				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
@@ -159,6 +159,48 @@
 			</header>
 			<section data-role="content">
 				This would be a confirmation that all items synced, not a new page...
+			</section>
+			<footer data-role="footer" class="ui-grid-a ui-bar">
+				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
+			    <a class="ui-block-b" href="#options" data-transition="slideup" data-icon="gear">Options</a>
+			</footer>
+		</section>
+		
+<!-- LOGIN PAGE -->
+		<section data-role="page" id="login">
+			<header data-role="header">
+				<h2>Home Tracker</h2>
+				<nav data-role="navbar" data-iconpos="left" class="ui-state-persist">
+					<ul>
+		                <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+		                <li><a href="#additem" data-transition="slide" data-icon="grid">Add Item</a></li>
+		                <li><a href="#sync" data-transition="slide" data-icon="refresh" class="ui-btn-active">Sync</a></li>
+		            </ul>
+				</nav>
+			</header>
+			<section data-role="content">
+				This is the login page
+			</section>
+			<footer data-role="footer" class="ui-grid-a ui-bar">
+				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
+			    <a class="ui-block-b" href="#options" data-transition="slideup" data-icon="gear">Options</a>
+			</footer>
+		</section>
+		
+<!-- SHOPPING LIST PAGE -->
+		<section data-role="page" id="shopping">
+			<header data-role="header">
+				<h2>Home Tracker</h2>
+				<nav data-role="navbar" data-iconpos="left" class="ui-state-persist">
+					<ul>
+		                <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+		                <li><a href="#additem" data-transition="slide" data-icon="grid">Add Item</a></li>
+		                <li><a href="#sync" data-transition="slide" data-icon="refresh" class="ui-btn-active">Sync</a></li>
+		            </ul>
+				</nav>
+			</header>
+			<section data-role="content">
+				This would be a list of items for shopping based on user inputs
 			</section>
 			<footer data-role="footer" class="ui-grid-a ui-bar">
 				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
