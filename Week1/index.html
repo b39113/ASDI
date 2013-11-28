@@ -38,7 +38,10 @@
 				</nav>
 			</header>
 			<section data-role="content">
-				
+				<a href="#additem"><img src="img/cta.gif" /></a>
+				<a href="#additem" data-role="button">Add Service Workorder</a> 
+				<a href="#options" data-role="button">Shopping List</a>
+				<a href="#options" data-role="button">Login to Account</a>
 			</section>
 			<footer data-role="footer" class="ui-grid-a ui-bar">
 				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
@@ -51,7 +54,7 @@
 				<h2>Home Tracker</h2>
 				<nav data-role="navbar" data-iconpos="left" class="ui-state-persist">
 					<ul>
-		                <li><a href="#home" data-transition="slide" data-icon="grid">Home</a></li>
+		                <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
 		                <li><a href="#additem" data-transition="slide" data-icon="grid" class="ui-btn-active">Add Item</a></li>
 		                <li><a href="#sync" data-transition="slide" data-icon="refresh">Sync</a></li>
 		            </ul>
@@ -127,9 +130,9 @@
 				<h2>Home Tracker</h2>
 				<nav data-role="navbar" data-iconpos="left" class="ui-state-persist">
 					<ul>
-		                <li><a href="#home" data-transition="slide" data-icon="grid">Home</a></li>
+		                <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
 		                <li><a href="#additem" data-transition="slide" data-icon="grid">Add Item</a></li>
-		                <li><a href="#sync" data-transition="slide" data-icon="refresh" class="ui-btn-active">Sync</a></li>
+		                <li><a href="#sync" data-transition="slide" data-icon="refresh">Sync</a></li>
 		            </ul>
 				</nav>
 			</header>
@@ -141,10 +144,31 @@
 			    <a class="ui-block-b" href="#options" data-transition="slideup" data-icon="gear">Options</a>
 			</footer>
 		</section>
+		
+<!-- SYNC PAGE TEMP -->
+		<section data-role="page" id="sync">
+			<header data-role="header">
+				<h2>Home Tracker</h2>
+				<nav data-role="navbar" data-iconpos="left" class="ui-state-persist">
+					<ul>
+		                <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+		                <li><a href="#additem" data-transition="slide" data-icon="grid">Add Item</a></li>
+		                <li><a href="#sync" data-transition="slide" data-icon="refresh" class="ui-btn-active">Sync</a></li>
+		            </ul>
+				</nav>
+			</header>
+			<section data-role="content">
+				This would be a confirmation that all items synced, not a new page...
+			</section>
+			<footer data-role="footer" class="ui-grid-a ui-bar">
+				<a class="ui-block-a" href="#" data-rel="back" data-icon="back">Back</a>
+			    <a class="ui-block-b" href="#options" data-transition="slideup" data-icon="gear">Options</a>
+			</footer>
+		</section>
 
 <!-- JavaScript under here -->
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script src="js/libs/jquery-1.9.1.min.js"></script>
+		<script src="js/libs/jquery.mobile-1.3.2.min.js"></script>
 		<script src="js/libs/jqm-inlinetabs.min.js"></script>
 		<script src="js/main.js"></script>
 
