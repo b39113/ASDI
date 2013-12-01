@@ -13,3 +13,7 @@ Boyd Tiffin
 	color: gray;
 	padding-left: 10px;
 }
+
+#addServiceFormErrorsLink{
+	display: none;
+}
