@@ -55,27 +55,35 @@ $(function(){
 	
 // VIEW ALL RECORDS PAGE
 	$('#viewAll').on('pageinit', function(){
-		// CORRECT APPEND STATEMENT
 		for(var i=0, j=localStorage.length; i<j; i++){
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			// String to Obj
 			var obj = JSON.parse(value); 
-			console.log(obj);
-			var createUL = document.createElement('ul');
-			createUL.setAttribute("data-role", "listview");
-			createUL.setAttribute("data-split-icon", "gear");
-			createUL.setAttribute("data-inset", "true");
-			$('#allRecordsParent').append(createUL).slideDown();
 /* 			getImage(createSubList, obj.status[1]); */
 			for(var d in obj){
-				var createSubLi = document.createElement('li');
-				createUL.appendChild(createSubLi);
-				var optSubText = obj[d][0]+" " +obj[d][1];
-				createSubLi.innerHTML = optSubText;
-/* 				createSubList.appendChild(createLinks); */
+				// Loop through all object pairs and display within a <a href> tag
+				var lineItems = obj[d][0]+" " +obj[d][1];
+				$('<li></li>')
+					.html(lineItems)
+					.appendTo("#allRecordsParent");
 			}
-/* 			createItemLinks(localStorage.key(i), createLinks); // Creates the overall app edit and delete links */
+			$('<a href="#additem" ></a>')
+				.html("Edit Idea")
+				.appendTo("#allRecordsParent");
+			//add spaces between edit and delete
+			$('<span class="spacer"></span>')
+				.html("&nbsp;&nbsp;&nbsp;")
+				.appendTo("#allRecordsParent");
+			$('<a href="#" ></a>')
+				.html("Delete Idea")
+				.appendTo("#allRecordsParent");
+			//deleteLink.key = key;
+			$('<br />')
+				.appendTo("#allRecordsParent");
+			$('<br />')
+				.appendTo("#allRecordsParent");
+
 		}
 	});	
 
@@ -95,7 +103,7 @@ $(function(){
 			idea.scCompany = ["Servicer Name:", $('#scCompany').val()];
 			idea.scPhone = ["Servicer Phone:", $('#scPhone').val()];
 			idea.scWarranty = ["Servicer Warranty?:", $('#scWarranty').val()];
-			idea.scWarDate = ["Warranty Expire:", $('#scWarDate').val()];
+			idea.scWarDate = ["Warranty Expires:", $('#scWarDate').val()];
 			idea.scDesc = ["Description:", $('#scDesc').val()];
 			// Add Radio Check to get value
 		localStorage.setItem(id, JSON.stringify(idea));
@@ -121,5 +129,6 @@ $(function(){
 	var deleteItem = function(){
 		alert("deleteItem function was called");
 	};
+	
 	
 });
