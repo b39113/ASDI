@@ -73,6 +73,7 @@ $(function(){
 				.appendTo("#allRecordsParent");
 
 		}
+		// AJAX Requests Start Here
 	});	
 // Function to create the edit and delete links for each record
 	var editDeleteLinks = function(key){
