@@ -59,26 +59,14 @@ $(function(){
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			// String to Obj
-			var obj = JSON.parse(value); 
+			var obj = JSON.parse(value);
 /* 			getImage(createSubList, obj.status[1]); */
 			for(var d in obj){
-				// Loop through all object pairs and display within a <a href> tag
-				var lineItems = obj[d][0]+" " +obj[d][1];
-				$('<li></li>')
-					.html(lineItems)
+			// Loop through all object pairs and display within a <a href> tag
+				$('<li>' + obj[d][0]+" " +obj[d][1] + '</li>')
 					.appendTo("#allRecordsParent");
 			}
-			$('<a href="#additem" ></a>')
-				.html("Edit Idea")
-				.appendTo("#allRecordsParent");
-			//add spaces between edit and delete
-			$('<span class="spacer"></span>')
-				.html("&nbsp;&nbsp;&nbsp;")
-				.appendTo("#allRecordsParent");
-			$('<a href="#" ></a>')
-				.html("Delete Idea")
-				.appendTo("#allRecordsParent");
-			//deleteLink.key = key;
+			editDeleteLinks(key)
 			$('<br />')
 				.appendTo("#allRecordsParent");
 			$('<br />')
@@ -86,8 +74,27 @@ $(function(){
 
 		}
 	});	
-
-
+// Function to create the edit and delete links for each record
+	var editDeleteLinks = function(key){
+		$('<a href="#additem">Edit Item</a>')
+			.appendTo("#allRecordsParent")
+			.attr('data-key', key )
+			.on("click", function(){
+				editItem(key);
+			});
+		//add spaces between edit and delete
+		$('<span class="spacer"></span>')
+			.html("&nbsp;&nbsp;&nbsp;")
+			.appendTo("#allRecordsParent");
+		$('<a href="#" >Delete Item</a>')
+			.appendTo("#allRecordsParent")
+			.attr('data-key', key )
+			.on("click", function(){
+				deleteItem(key);
+			});
+	}
+	
+	
 // Below are functions that can be called from any page, everything here needs to be stored as variables so that it is not run everytime a page loads
 
 	var storeItem = function(key){
@@ -111,8 +118,29 @@ $(function(){
 		window.location="#home";
 	};
 	
-	var editItem = function(){
-		alert("editItem function was called");
+	var editItem = function(key){
+		console.log(JSON.parse(localStorage.getItem(key)));
+		var itemValue = JSON.parse(localStorage.getItem(key));
+		$('#scTitle').val(itemValue.scTitle[1]);
+		$('#scDate').val(itemValue.scDate[1]);
+		$('#scCompany').val(itemValue.scCompany[1]);
+		$('#scPhone').val(itemValue.scPhone[1]);
+		$('#scWarranty').val(itemValue.scWarranty[1]);
+		$('#scWarDate').val(itemValue.scWarDate[1]);
+		$('#scDesc').val(itemValue.scDesc[1]);
+		// Change button from Add Record to Edit Record
+		$('#subService').val('Edit Record');
+/*
+					// Remove StoreData
+					save.removeEventListener("click", storeData);
+					// Change add to edit
+					aaa('butSubmit').value = "Edit Idea";
+					// Create a listener that will run validate function
+					var editSubmit = aaa('butSubmit');
+					editSubmit.addEventListener("click", validate);
+					// Save key value established as property of edit submit event
+					editSubmit.key = this.key;
+*/
 	};
 	
 	var deleteAll = function(){
@@ -126,9 +154,10 @@ $(function(){
 		}
 	};
 	
-	var deleteItem = function(){
-		alert("deleteItem function was called");
+	var deleteItem = function(key){
+		alert(key);
 	};
+	
 	
 	
 });
