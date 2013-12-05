@@ -62,9 +62,9 @@
 				</nav>
 			</header>
 			<section id="content-section" data-role="content">
-				<a href="#" data-role="button">Load XML File</a>
-				<a href="#" data-role="button">Load CSV File</a>
-				<a href="#" data-role="button">Load JSON File</a>
+				<a href="#" id="loadXML" data-role="button">Load XML File</a>
+				<a href="#" id="loadCSV" data-role="button">Load CSV File</a>
+				<a href="#" id="loadJSON" data-role="button">Load JSON File</a>
 				<ul data-role="listview" data-split-icon="gear" data-inset="true" id="allRecordsParent">
 					
 				</ul>
@@ -137,6 +137,7 @@
 							<label for="scDesc">Description:</label>
 								<textarea data-mini="true" cols="40" rows="8" name="scDesc" id="scDesc" placeholder="Full details..." required></textarea>
 								<span class="hint">Enter full description of work completed</span>
+								<input type="hidden" value="" name="hiddenKey" id="hiddenKey" />
 							</section>
 							<input id="subService" type="submit" value="Add Record" data-icon="check" />
 						</form>

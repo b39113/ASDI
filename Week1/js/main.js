@@ -32,14 +32,20 @@ $(function(){
 			    },
 			    submitHandler: function(){
 				    var data = myForm.serializeArray();
-				    storeItem();
+				    var key = $('#hiddenKey').attr('data-key');
+				    if(!key){
+					    storeItem()
+				    }else{
+					    var key = $('#hiddenKey').attr('data-key');
+					    storeItem(key)
+				    }
 			    }
 		    });
 	});
 
 // OPTIONS page functions that need to run specific to that page
 	$('#options').on('pageinit', function(){
-		$("#butClearAll").bind("click", function(){
+		$("#butClearAll").on("click", function(){
 			//Prompt user that this is unrecoverable and get confirmation
 			var x = confirm("Clear All Data? This is not reversible");
 			if(x){
@@ -73,7 +79,36 @@ $(function(){
 				.appendTo("#allRecordsParent");
 
 		}
-		// AJAX Requests Start Here
+	// AJAX Requests Start Here
+		// JSON FILE	
+		$("#loadJSON").on("click", function(){
+			$.ajax({
+			  file: "js/json.js",
+			  context: document.body
+			}).done(function() {
+			  addJson();
+			});
+		});
+		
+		//XML FILE
+		$("#loadXML").on("click", function(){
+			$.ajax({
+			  file: "js/xml.xml",
+			  context: document.body
+			}).done(function() {
+			  addXML();
+			});
+		});
+		
+		// CSV FILE
+		$("#loadCSV").on("click", function(){
+			$.ajax({
+			  file: "js/csv.csv",
+			  context: document.body
+			}).done(function() {
+			  addCSV();
+			});
+		});
 	});	
 // Function to create the edit and delete links for each record
 	var editDeleteLinks = function(key){
@@ -99,6 +134,7 @@ $(function(){
 // Below are functions that can be called from any page, everything here needs to be stored as variables so that it is not run everytime a page loads
 
 	var storeItem = function(key){
+		alert("The key is " + key);
 		if(!key){
 			var id = Math.floor(Math.random()*100000001);
 		}else{
@@ -131,17 +167,8 @@ $(function(){
 		$('#scDesc').val(itemValue.scDesc[1]);
 		// Change button from Add Record to Edit Record
 		$('#subService').val('Edit Record');
-/*
-					// Remove StoreData
-					save.removeEventListener("click", storeData);
-					// Change add to edit
-					aaa('butSubmit').value = "Edit Idea";
-					// Create a listener that will run validate function
-					var editSubmit = aaa('butSubmit');
-					editSubmit.addEventListener("click", validate);
-					// Save key value established as property of edit submit event
-					editSubmit.key = this.key;
-*/
+		$('#hiddenKey')
+			.attr('data-key', key);
 	};
 	
 	var deleteAll = function(){
@@ -156,9 +183,21 @@ $(function(){
 	};
 	
 	var deleteItem = function(key){
-		alert(key);
+		var ask = confirm("Are you sure you want to delete this idea?");
+		if(ask){
+			localStorage.removeItem(key);
+			alert("Idea was deleted successfully!");
+			window.location.reload();
+		}else{
+			alert("Idea was not deleted, now get to work!")
+		}
 	};
 	
-	
-	
+	var addJson = function(){
+		for(var n in json){
+			var id = Math.floor(Math.random()*100000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+		window.location.reload();
+	}
 });
