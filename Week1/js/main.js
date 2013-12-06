@@ -68,14 +68,11 @@ $(function(){
 			var obj = JSON.parse(value);
 /* 			getImage(createSubList, obj.status[1]); */
 			for(var d in obj){
-			// Loop through all object pairs and display within a <a href> tag
 				$('<li>' + obj[d][0]+" " +obj[d][1] + '</li>')
 					.appendTo("#allRecordsParent");
 			}
 			editDeleteLinks(key)
-			$('<br />')
-				.appendTo("#allRecordsParent");
-			$('<br />')
+			$('<br /><br />')
 				.appendTo("#allRecordsParent");
 
 		}
@@ -84,29 +81,33 @@ $(function(){
 		$("#loadJSON").on("click", function(){
 			$.ajax({
 			  file: "js/json.js",
-			  context: document.body
 			}).done(function() {
 			  addJson();
 			});
 		});
 		
+		$("#addJSON").on("click", function(){
+			for(var n in json){
+				var id = Math.floor(Math.random()*100000001);
+				localStorage.setItem(id, JSON.stringify(json[n]));
+			}
+			window.location.reload();
+		});
+		
 		//XML FILE
 		$("#loadXML").on("click", function(){
-			$.ajax({
-			  file: "js/xml.xml",
-			  context: document.body
-			}).done(function() {
-			  addXML();
-			});
+			
 		});
 		
 		// CSV FILE
 		$("#loadCSV").on("click", function(){
 			$.ajax({
-			  file: "js/csv.csv",
-			  context: document.body
-			}).done(function() {
-			  addCSV();
+			    file:'js/csv.csv',
+			    type:'get',
+			    dataType:'json',
+			    success:function(data){
+			        alert(data);
+			    }
 			});
 		});
 	});	
@@ -177,7 +178,7 @@ $(function(){
 		}else{
 			localStorage.clear();
 			alert("All data has been cleared!");
-			window.location="#home";
+			window.location.reload();
 			return false;
 		}
 	};
@@ -196,8 +197,24 @@ $(function(){
 	var addJson = function(){
 		for(var n in json){
 			var id = Math.floor(Math.random()*100000001);
-			localStorage.setItem(id, JSON.stringify(json[n]));
+			var obj = JSON.stringify(json[n]);
+			var obj = JSON.parse(obj);
+			for(var d in obj){
+				$('<li>' + obj[d][0]+" " +obj[d][1] + '</li>')
+					.appendTo("#allRecordsParent");
+			}
+			$('<br />')
+				.appendTo("#allRecordsParent");
 		}
-		window.location.reload();
+/* 		window.location.reload(); */
+	}
+	
+	var addCSV = function(csvdata){
+		results = $.parse(csvdata, {
+		    delimiter: ",",
+		    header: true,
+		    dynamicTyping: true
+		});
+		console.log(results);
 	}
 });
