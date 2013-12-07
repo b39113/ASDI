@@ -80,6 +80,7 @@ $(function(){
 		// JSON FILE	
 		$("#loadJSON").on("click", function(){
 			$.getJSON( "js/json.json", function(data) {
+			}).done(function(data){
 				// Object now exists called data
 				for(var key in data){
 					var obj = data[key];
@@ -95,7 +96,10 @@ $(function(){
 		
 		//XML FILE
 		$("#loadXML").on("click", function(){
-			
+			$.get("js/xml.xml", function(data){
+				console.log(data);
+				
+			})
 		});
 	});	
 // Function to create the edit and delete links for each record
@@ -178,28 +182,4 @@ $(function(){
 			alert("Idea was not deleted, now get to work!")
 		}
 	};
-	
-	var addJson = function(){
-		for(var n in json){
-			var id = Math.floor(Math.random()*100000001);
-			var obj = JSON.stringify(json[n]);
-			var obj = JSON.parse(obj);
-			for(var d in obj){
-				$('<li>' + obj[d][0]+" " +obj[d][1] + '</li>')
-					.appendTo("#allRecordsParent");
-			}
-			$('<br />')
-				.appendTo("#allRecordsParent");
-		}
-/* 		window.location.reload(); */
-	}
-	
-	var addCSV = function(csvdata){
-		results = $.parse(csvdata, {
-		    delimiter: ",",
-		    header: true,
-		    dynamicTyping: true
-		});
-		console.log(results);
-	}
 });

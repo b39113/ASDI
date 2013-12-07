@@ -1,11 +1,11 @@
 [
 	{
 		"JSONTitle:" : "Shower Replacement",
-		"Service_Date:" : "2013-11-11",
-		"Servicer_Name:" : "The Sparks Solution",
-		"Servicer_Phone:" : "1-515-123-1234",
-		"Servicer_Warranty:" : "no",
-		"Warranty_Expires:" : "",
+		"Service Date:" : "2013-11-11",
+		"Servicer Name:" : "The Sparks Solution",
+		"Servicer Phone:" : "1-515-123-1234",
+		"Servicer Warranty:" : false,
+		"Warranty Expires:" : null,
 		"Description:" : "Replaced shower in the master bathroom due to leak in the floor pan"
 	},
 	{
