@@ -79,36 +79,23 @@ $(function(){
 	// AJAX Requests Start Here
 		// JSON FILE	
 		$("#loadJSON").on("click", function(){
-			$.ajax({
-			  file: "js/json.js",
-			}).done(function() {
-			  addJson();
+			$.getJSON( "js/json.json", function(data) {
+				// Object now exists called data
+				for(var key in data){
+					var obj = data[key];
+					for(var m in obj){
+						$('<li>' + m +" " +obj[m] + '</li>')
+							.appendTo("#allRecordsParent");
+					}
+					$('<br />')
+					.appendTo("#allRecordsParent");
+				}
 			});
-		});
-		
-		$("#addJSON").on("click", function(){
-			for(var n in json){
-				var id = Math.floor(Math.random()*100000001);
-				localStorage.setItem(id, JSON.stringify(json[n]));
-			}
-			window.location.reload();
 		});
 		
 		//XML FILE
 		$("#loadXML").on("click", function(){
 			
-		});
-		
-		// CSV FILE
-		$("#loadCSV").on("click", function(){
-			$.ajax({
-			    file:'js/csv.csv',
-			    type:'get',
-			    dataType:'json',
-			    success:function(data){
-			        alert(data);
-			    }
-			});
 		});
 	});	
 // Function to create the edit and delete links for each record
@@ -135,7 +122,6 @@ $(function(){
 // Below are functions that can be called from any page, everything here needs to be stored as variables so that it is not run everytime a page loads
 
 	var storeItem = function(key){
-		alert("The key is " + key);
 		if(!key){
 			var id = Math.floor(Math.random()*100000001);
 		}else{
@@ -187,7 +173,6 @@ $(function(){
 		var ask = confirm("Are you sure you want to delete this idea?");
 		if(ask){
 			localStorage.removeItem(key);
-			alert("Idea was deleted successfully!");
 			window.location.reload();
 		}else{
 			alert("Idea was not deleted, now get to work!")
