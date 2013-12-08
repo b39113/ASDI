@@ -97,8 +97,13 @@ $(function(){
 		//XML FILE
 		$("#loadXML").on("click", function(){
 			$.get("js/xml.xml", function(data){
-				console.log(data);
-				
+				array = $(data).find("Record");
+				for(x=0, y=array.length; x<y; x++){
+					var loopV = array[x];
+					var values = $(loopV).text();
+					$('<li>' + values + '</li><br />')
+						.appendTo("#allRecordsParent");
+				}
 			})
 		});
 	});	
