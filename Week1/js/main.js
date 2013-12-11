@@ -77,11 +77,11 @@ $(function(){
 
 		}
 	// AJAX Requests Start Here
-		// JSON FILE	
+		// JSON FILE
 		$("#loadJSON").on("click", function(){
 			$.getJSON( "js/json.json", function(data) {
 			}).done(function(data){
-				// Object now exists called data
+				// Object now exists called data, this is my JSON Object
 				for(var key in data){
 					var obj = data[key];
 					for(var m in obj){
